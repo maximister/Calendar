@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: src/main/java/ru/mirea/maximister/notificator
+    ports:
+      - "8280:8280"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5435/notificator
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on:
+      - db
+  db:
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: your_database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db: { }
