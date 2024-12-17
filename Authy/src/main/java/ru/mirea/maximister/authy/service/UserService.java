@@ -6,6 +6,8 @@ import ru.mirea.maximister.authy.model.User;
 import ru.mirea.maximister.authy.repository.UserProfileRepository;
 import ru.mirea.maximister.authy.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -28,6 +30,10 @@ public class UserService {
         }
 
         return user.get();
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
 }

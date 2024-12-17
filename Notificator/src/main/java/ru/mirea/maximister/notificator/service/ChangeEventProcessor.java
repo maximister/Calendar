@@ -8,7 +8,7 @@ import ru.mirea.maximister.client.UserClient;
 import ru.mirea.maximister.notificator.model.db.Reminder;
 import ru.mirea.maximister.dto.kafka.ChangeEvent;
 import ru.mirea.maximister.dto.kafka.ChangeEventType;
-import ru.mirea.maximister.notificator.notifications.MailNotificator;
+import ru.mirea.maximister.notificator.service.notifications.MailNotificator;
 import ru.mirea.maximister.notificator.repository.ReminderRepository;
 import ru.mirea.maximister.notificator.utils.NotificationMapper;
 

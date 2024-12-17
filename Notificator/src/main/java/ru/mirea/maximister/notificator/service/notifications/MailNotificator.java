@@ -1,4 +1,4 @@
-package ru.mirea.maximister.notificator.notifications;
+package ru.mirea.maximister.notificator.service.notifications;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

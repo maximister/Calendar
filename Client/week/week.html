@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Меню</h2>
+            <ul>
+                <li><a href="#">Личный кабинет</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <button id="prevWeek">←</button>
+                <div id="calendarTitle">Текущая неделя</div>
+                <button id="nextWeek">→</button>
+            </div>
+            <div class="calendar">
+                <div class="hour-labels"></div> <!-- Новый элемент для отметок времени -->
+                <div class="week">
+                    <div id="weekDays" class="day-header"></div>
+                    <div class="days"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Форма для создания события -->
+
+<div id="eventForm" style="display: none;", class="event-form">
+    <label for="eventName">Event Name:</label>
+    <input type="text" id="eventName">
+
+    <label for="eventDescription">Description (optional):</label>
+    <input type="text" id="eventDescription">
+
+    <label for="eventConferenceUrl">Conference URL (optional):</label>
+    <input type="text" id="eventConferenceUrl">
+
+    <button id="saveEvent">Save</button>
+    <button id="cancelEvent">Cancel</button>
+</div>
+
+
+
+<div id="eventInfoModal" style="display: none;">
+    <h3 id="modalEventName"></h3>
+    <div id="modalContent">
+        <!-- Динамически добавляемая информация -->
+    </div>
+    <p id="modalEventDescription"></p>
+    <p id="modalEventConferenceUrl"></p>
+    <button id="toggleAttendeesButton">Показать участников</button>
+    <div id="attendeesContainer" style="display: none;">
+        <label>Участники: </label>
+        <select id="attendeesList" size="5">
+            <!-- Сюда будут добавляться участники -->
+        </select>
+        <button id="removeAttendeeButton">Удалить выбранного участника</button>
+        <button id="addAttendeeButton">Добавить участника</button>
+    </div>
+    <button id="editEventButton">Редактировать</button>
+    <button id="deleteEventButton">Удалить</button>
+    <button id="closeModalButton">Закрыть</button>
+</div>
+
+
+
+<script defer src="script.js"></script>
+</body>
+</html>

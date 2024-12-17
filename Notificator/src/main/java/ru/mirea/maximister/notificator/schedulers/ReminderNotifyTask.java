@@ -1,10 +1,10 @@
-package ru.mirea.maximister.notificator.scedulers;
+package ru.mirea.maximister.notificator.schedulers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import ru.mirea.maximister.notificator.notifications.MailNotificator;
+import ru.mirea.maximister.notificator.service.notifications.MailNotificator;
 import ru.mirea.maximister.notificator.repository.ReminderRepository;
 import ru.mirea.maximister.notificator.service.ReminderService;
 import ru.mirea.maximister.notificator.utils.NotificationMapper;

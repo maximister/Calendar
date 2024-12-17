@@ -1,0 +1,27 @@
+
+spring:
+  application:
+    name: Calendar
+  cloud:
+    gateway:
+      cors:
+        # apply to all paths
+        allowed-origins: "*"
+        allowed-methods: "*"
+        allowed-headers: "*"
+      routes:
+        - id: authy
+          uri: http://localhost:8180/
+          predicates:
+            - Path=/auth/**
+
+        - id: event_management_service
+          uri: http://localhost:8080/
+          predicates:
+            - Path=/api/v2/**
+          filters:
+            - RemoveRequestHeader=Authorization
+            - AddRequestHeader=Authorization, Bearer {token}
+
+server:
+  port: 8380

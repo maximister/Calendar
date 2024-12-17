@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет пользователя</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-info">
+            <div><strong>Пользователь:</strong> test-user</div>
+            <div><strong>Имя:</strong> Алексей</div>
+            <div><strong>Фамилия:</strong> Тестовый</div>
+            <div><strong>Email:</strong> test@example.com</div>
+        </div>
+        <button class="button" onclick="logout()">Выйти из аккаунта</button>
+        <button class="button" onclick="goToSchedule()">Перейти к расписанию</button>
+    </div>
+
+    <script>
+        function logout() {
+            // Логика для выхода из аккаунта
+            alert('Выход из аккаунта');
+        }
+
+        function goToSchedule() {
+            // Логика перехода к расписанию
+            alert('Переход к расписанию');
+        }
+    </script>
+</body>
+</html>

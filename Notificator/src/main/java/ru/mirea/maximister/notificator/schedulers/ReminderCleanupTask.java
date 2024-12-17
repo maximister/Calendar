@@ -1,4 +1,4 @@
-package ru.mirea.maximister.notificator.scedulers;
+package ru.mirea.maximister.notificator.schedulers;
 
 
 import lombok.RequiredArgsConstructor;

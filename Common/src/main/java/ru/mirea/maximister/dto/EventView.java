@@ -9,6 +9,7 @@ import java.time.Instant;
 @Value
 @Builder(toBuilder = true)
 public class EventView {
+    String id;
     String title;
     Instant from;
     Instant to;

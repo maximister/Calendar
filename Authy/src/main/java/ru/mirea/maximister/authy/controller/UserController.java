@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.mirea.maximister.authy.service.UserService;
 import ru.mirea.maximister.authy.util.UserMapper;
 
+import static org.springframework.http.HttpStatus.OK;
+
 @RestController
 @RequestMapping("/api/v2/users")
 @AllArgsConstructor
@@ -20,7 +22,7 @@ public class UserController {
     public ResponseEntity<?> getUser(@PathVariable long uid) {
         return new ResponseEntity<>(
                 UserMapper.toDto(userService.getUserByUid(uid)),
-                HttpStatus.OK
+                OK
         );
     }
 
@@ -28,7 +30,17 @@ public class UserController {
     public ResponseEntity<?> getUser(@PathVariable String email) {
         return new ResponseEntity<>(
                 UserMapper.toDto(userService.getUserByEmail(email)),
-                HttpStatus.OK
+                OK
         );
     }
+
+    @GetMapping
+    public ResponseEntity<?> getUsers() {
+        return new ResponseEntity<>(
+                userService.getAllUsers().stream().map(UserMapper::toDto).toList(),
+                OK
+        );
+    }
+
+    // TODO: get user profile info
 }

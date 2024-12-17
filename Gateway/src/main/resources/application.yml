@@ -1,0 +1,24 @@
+spring:
+    application:
+        name: Gateway
+    cloud:
+      gateway:
+        globalcors:
+          cors-configurations:
+            '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"
+        routes:
+          - id: protected_routes
+            uri: http://localhost:8080
+            predicates:
+              - Path=/**
+            filters:
+              - JwtValidationFilter
+    main:
+      web-application-type: reactive
+      allow-bean-definition-overriding: true
+
+server:
+    port: 8380

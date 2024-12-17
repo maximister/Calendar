@@ -65,4 +65,8 @@ public class AuthService {
         var jwt = jwtService.generateToken(user);
         return new AuthResponse(jwt);
     }
+
+    public Boolean validate(String token) {
+        return jwtService.isTokenValid(token);
+    }
 }

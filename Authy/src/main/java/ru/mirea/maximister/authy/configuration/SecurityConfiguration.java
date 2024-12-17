@@ -48,6 +48,7 @@ public class SecurityConfiguration {
                 )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/v2/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/swagger-ui**").permitAll()
                         .requestMatchers(this::isInternalServiceRequest).permitAll()
                         .anyRequest().authenticated()
                 )

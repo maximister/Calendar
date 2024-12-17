@@ -10,7 +10,6 @@ import ru.mirea.maximister.eventmanagmentservice.service.EventService;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -59,7 +58,7 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createEvent(@RequestBody CreateEventRequest request) {
+    public ResponseEntity<String> createEvent(@RequestBody CreateEventRequest request) {
         var result = eventService.createEvent(
                 Event.builder()
                         .title(request.getTitle())
@@ -80,7 +79,7 @@ public class EventController {
     }
 
     @DeleteMapping
-    public ResponseEntity<?> deleteEvent(@RequestBody DeleteEventRequest request) {
+    public ResponseEntity<Boolean> deleteEvent(@RequestBody DeleteEventRequest request) {
         return new ResponseEntity<>(
                 eventService.deleteEvent(
                 request.getEventId(), request.getUid()),
@@ -88,7 +87,7 @@ public class EventController {
     }
 
     @PutMapping
-    public ResponseEntity<?> updateEvent(@RequestBody UpdateEventRequest request) {
+    public ResponseEntity<Boolean> updateEvent(@RequestBody UpdateEventRequest request) {
         return new ResponseEntity<>(eventService.updateEvent(
                 Event.builder()
                         .title(request.getEvent().getTitle())
@@ -122,6 +121,7 @@ public class EventController {
                 OK);
     }
 
+    // add to clients
     @PutMapping("/users")
     public ResponseEntity<?> addUserToEvent(@RequestBody AddUserToEventRequest request) {
         return new ResponseEntity<>(eventService.addUserToEvent(
@@ -129,6 +129,7 @@ public class EventController {
                 OK);
     }
 
+    // add to clients
     @DeleteMapping("/users")
     public ResponseEntity<?> deleteUserFromEvent(@RequestBody DeleteUserFromEventRequest request) {
         return new ResponseEntity<>(eventService.deleteUserFromEvent(
@@ -136,18 +137,19 @@ public class EventController {
                 OK);
     }
 
-    @GetMapping("/users/{userId}&{from}&{to}")
-    public ResponseEntity<?> getAllUserEvents(
-            @PathVariable long userId,
+    @GetMapping("/users/{userUid}&{from}&{to}")
+    public ResponseEntity<EventViewList> getAllUserEvents(
+            @PathVariable long userUid,
             @PathVariable Instant from,
             @PathVariable Instant to
             ) {
-        var result = eventService.getAllUserEvents(userId, from, to);
+        var result = eventService.getAllUserEvents(userUid, from, to);
 
         var view = EventViewList.builder()
                 .eventViews(
                         result.stream()
                                 .map(event -> EventView.builder()
+                                        .id(event.getId().toString())
                                         .title(event.getTitle())
                                         .from(event.getInterval().getStart())
                                         .to(event.getInterval().getEnd())
